@@ -5,7 +5,7 @@
     <parent>
         <artifactId>pet-clinic</artifactId>
         <groupId>com.carlhuffmeier</groupId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>pet-clinic-web</artifactId>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.carlhuffmeier</groupId>
             <artifactId>pet-clinic-data</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <version>0.0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>

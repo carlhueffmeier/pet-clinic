@@ -2,11 +2,13 @@ package com.carlhuffmeier.petclinic.services.map;
 
 import com.carlhuffmeier.petclinic.models.PetType;
 import com.carlhuffmeier.petclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("data-map")
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
 
     @Override

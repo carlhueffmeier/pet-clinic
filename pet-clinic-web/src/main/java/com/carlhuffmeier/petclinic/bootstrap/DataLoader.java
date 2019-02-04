@@ -5,10 +5,12 @@ import com.carlhuffmeier.petclinic.models.Pet;
 import com.carlhuffmeier.petclinic.models.PetType;
 import com.carlhuffmeier.petclinic.models.Speciality;
 import com.carlhuffmeier.petclinic.models.Vet;
+import com.carlhuffmeier.petclinic.models.Visit;
 import com.carlhuffmeier.petclinic.services.OwnerService;
 import com.carlhuffmeier.petclinic.services.PetTypeService;
 import com.carlhuffmeier.petclinic.services.SpecialityService;
 import com.carlhuffmeier.petclinic.services.VetService;
+import com.carlhuffmeier.petclinic.services.VisitService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,17 +23,20 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private VisitService visitService;
 
     public DataLoader(
             OwnerService ownerService,
             VetService vetService,
             PetTypeService petTypeService,
-            SpecialityService specialityService
+            SpecialityService specialityService,
+            VisitService visitService
     ) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -119,5 +124,19 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("🚑 Vets loaded");
+
+        Visit visit1 = new Visit();
+        visit1.setPet(mikesPet);
+        visit1.setDate(LocalDate.now());
+        visit1.setDescription("Just a checkup");
+        visitService.save(visit1);
+
+        Visit visit2 = new Visit();
+        visit2.setPet(fionasPet);
+        visit2.setDate(LocalDate.now());
+        visit2.setDescription("Removing a splinter in Boxie's paw");
+        visitService.save(visit2);
+
+        System.out.println("🕐 Visits loaded");
     }
 }
